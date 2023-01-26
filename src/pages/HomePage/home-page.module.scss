@@ -1,0 +1,145 @@
+.home_page{
+  height: fit-content;
+  overflow-x: hidden;
+  text-align: center;
+
+  &__wrapper{
+    max-width: 95%;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+  }
+}
+
+.section{
+  display: flex;
+  flex-flow: row;
+  gap: .5rem;
+  width: fit-content;
+  padding: 1rem;
+  margin-bottom: 4rem;
+
+  @media screen and  (max-width: 980px) {
+    flex-flow: column;
+  }
+}
+
+.text_wrapper{
+  max-width: 28rem;
+  height: 28rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and  (max-width: 980px) {
+    height: auto;
+  }
+}
+
+.img_wrapper{
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 28rem;
+  height: 28rem;
+  overflow: hidden;
+
+  @media screen and  (max-width: 980px) {
+    width: auto;
+    max-width: 28rem;
+    height: auto;
+  }
+
+
+  img{
+    height: 100%;
+    vertical-align: top;
+
+    &.logo {
+      width: 90%;
+      height: 90%;
+    }
+
+    @media screen and  (max-width: 980px) {
+      height: auto;
+      width: 100%;
+    }
+  }
+}
+
+.rss_about{
+  font-size: 1.6rem;
+  margin-bottom: 0;
+}
+
+.subtitle{
+  font-size: 1.2rem;
+}
+
+.hi{
+  font-size: 1.6rem;
+  text-align: center;
+  margin: 1rem auto;
+  width: 28rem;
+
+  @media screen and  (max-width: 980px) {
+    height: auto;
+    width: 100%;
+  }
+}
+
+.contacts {
+  display: flex;
+  justify-content: center;
+  width: 28rem;
+  gap: 1rem;
+  margin: 1rem 0;
+
+
+  @media screen and  (max-width: 980px) {
+    height: auto;
+    width: 100%;
+  }
+}
+
+.icon{
+  width: 48px;
+
+  img{
+    width: 100%;
+  }
+}
+
+.technology{
+  width: 60px;
+
+  img{
+    width: 100%;
+  }
+}
+
+.icon, .technology {
+  transition: all cubic-bezier(.79,-0.52,.19,1.45) .3s;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+.tech_list{
+  display: flex;
+  width: 100%;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  max-width: 90%;
+  gap: 0 2rem;
+}
+
+
+

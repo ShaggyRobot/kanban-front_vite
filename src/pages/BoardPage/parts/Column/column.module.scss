@@ -1,0 +1,138 @@
+.column {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 60px;
+  max-height: 100%;
+  min-width: fit-content;
+  padding: .5rem;
+  overflow-x: hidden;
+
+
+  &__drag_wrap {
+    display: flex;
+    height: fit-content;
+    max-height: 100%;
+    margin-right: 1rem;
+  }
+
+  &__title {
+    width: 260px;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 0.25rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 260;
+    cursor: pointer;
+  }
+
+  &__edit_wrapper {
+    max-width: 260px;
+    margin-top: 0.5rem;
+    display: flex;
+  }
+
+  &__edit_controls {
+    display: flex;
+  }
+
+  &__edit_input{
+    box-sizing: border-box;
+    max-width: 260px;
+    font-size: 1.2rem;
+    font-family: inherit;
+    margin-bottom: 1rem;
+    padding: .25rem;
+    border: none;
+    resize: none;
+
+    &:focus {
+      outline: none;
+      border: none;
+    }
+  }
+
+  @keyframes shake {
+    0% {
+      transform: translateX(0%);
+    }
+
+    25% {
+      transform: translateX(10%);
+      transform: rotate(20deg);
+    }
+
+    50% {
+      transform: translateX(-10%);
+      transform: rotate(-20deg);
+    }
+
+    75% {
+      transform: translateX(10%);
+    }
+
+    100% {
+      transform: translateX(0%);
+    }
+  }
+
+  &__controls {
+    display: flex;
+    gap: .5rem;
+    position: absolute;
+    top: .7rem;
+    right: .5rem;
+  }
+
+  &__delete {
+    position: absolute;
+    right: .5rem;
+    bottom: .5rem;
+    cursor: pointer;
+
+    &:hover{
+      animation-duration: .3s;
+      animation-name: shake;
+    }
+  }
+
+  &__tasklist {
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-height: 48px;
+    padding: 0 1rem;
+    max-height: 100%;
+
+    /* width */
+    &::-webkit-scrollbar {
+      width: 8px;
+      border-radius: 0.5rem;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+      background: rgb(43 102 195);
+      border-radius: 0.5rem;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: rgb(205 219 152);
+      border-radius: 0.5rem;
+    }
+
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+      background: pink;
+    }
+  }
+}
+
+.create{
+  width: 100%;
+  text-align: center;
+}

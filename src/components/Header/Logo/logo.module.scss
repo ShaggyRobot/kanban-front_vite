@@ -1,0 +1,23 @@
+.logo {
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+}
+
+.animate {
+  animation: roto 1.5s cubic-bezier(.79,-0.52,.19,1.45) 1;
+}
+
+@keyframes roto {
+  0% {
+    transform: rotateY(0deg);
+  }
+
+  75% {
+    transform: rotateY(-720deg) scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}

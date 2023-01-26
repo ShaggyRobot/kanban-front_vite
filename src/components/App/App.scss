@@ -1,0 +1,14 @@
+.app, %app{
+  font-family: Roboto, sans-serif;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
+  overflow-x: hidden;
+  background-image: url('../../assets/bckg.svg');
+
+  &-home{
+    @extend %app;
+
+    height: auto;
+  }
+}

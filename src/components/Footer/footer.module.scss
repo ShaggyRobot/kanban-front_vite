@@ -1,0 +1,22 @@
+.footer{
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  align-items: center;
+  height: 6rem;
+  width: 100vw;
+  background-image: url("wave.svg");
+  background-size: 100% 100%;
+
+  &__rsslogo{
+    height: 100%;
+    position: relative;
+
+    &_year{
+      position: absolute;
+      font-weight: 800;
+      left: 40px;
+      top: 4px;
+    }
+  }
+}
