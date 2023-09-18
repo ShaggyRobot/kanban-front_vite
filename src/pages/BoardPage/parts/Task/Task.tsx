@@ -16,11 +16,12 @@ function Task(props: {
   boardId: string;
   columnId: string;
   index: number;
+  dragDisabled: boolean;
 }): JSX.Element {
-  const { task, boardId, columnId, index } = props;
+  const { task, boardId, columnId, index, dragDisabled } = props;
 
   return (
-    <Draggable draggableId={task.id} key={task.id} index={index}>
+    <Draggable draggableId={task.id} key={task.id} index={index} isDragDisabled={dragDisabled}>
       {(provided, snap) => {
         return (
           <div

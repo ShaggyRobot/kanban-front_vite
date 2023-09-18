@@ -23,20 +23,23 @@ import {
 } from '@Rtk';
 
 import styles from './board.module.scss';
+import { FetchingLinear } from '@/pages/BoardPage/parts/FetchingLinear/FetchingLinear';
 
 function BoardPage(): JSX.Element {
   const { id: boardId } = useParams();
   const userId = localStorage.getItem('userId');
 
+  const { data, isLoading, isFetching } = useGetBoardQuery(boardId!);
+  const [updateColumn, { isLoading: ColIsUpdating }] = useUpdateColumnMutation();
+  const [updateTask, { isLoading: TaskIsUpdating }] = useUpdateTaskMutation();
+
   const [open, setOpen] = useState(false);
-  const { data, isLoading } = useGetBoardQuery(boardId!);
   const [columns, setColumns] = useState<Array<IColumn>>([]);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
-  const [updateColumn] = useUpdateColumnMutation();
-  const [updateTask] = useUpdateTaskMutation();
-
   const drawerContainer = useRef<HTMLDivElement>(null);
+
+  const dragDisabled = isFetching || ColIsUpdating || TaskIsUpdating;
 
   useEffect(() => {
     data && setColumns(data.columns);
@@ -161,6 +164,8 @@ function BoardPage(): JSX.Element {
     setDrawerOpen(!drawerOpen);
   };
 
+  //------------------------------------------------------------------------------------------------
+
   return (
     <div className={`${styles.board}`} ref={drawerContainer} style={{ position: 'relative' }}>
       {isLoading ? (
@@ -169,6 +174,7 @@ function BoardPage(): JSX.Element {
         </h1>
       ) : (
         <>
+          <FetchingLinear />
           <div className={styles.board__title}>
             <div className={styles.board__title_text}>{data?.title}</div>
 
@@ -194,7 +200,13 @@ function BoardPage(): JSX.Element {
                     [...columns]
                       .sort((a, b) => a.order - b.order)
                       .map((column, idx) => (
-                        <Column key={column.id} column={column} index={idx} boardId={boardId!} />
+                        <Column
+                          key={column.id}
+                          column={column}
+                          index={idx}
+                          boardId={boardId!}
+                          dragDisabled={dragDisabled}
+                        />
                       ))}
 
                   {provided.placeholder}

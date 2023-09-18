@@ -19,8 +19,13 @@ import { animateStyles } from '../../utils/animateStyles';
 
 import styles from './column.module.scss';
 
-function Column(props: { boardId: string; column: IColumn; index: number }): JSX.Element {
-  const { boardId, column, index } = props;
+function Column(props: {
+  boardId: string;
+  column: IColumn;
+  index: number;
+  dragDisabled: boolean;
+}): JSX.Element {
+  const { boardId, column, index, dragDisabled } = props;
 
   const { t } = useTranslation();
 
@@ -55,7 +60,12 @@ function Column(props: { boardId: string; column: IColumn; index: number }): JSX
   };
 
   return (
-    <Draggable draggableId={column.id} key={column.id} index={index} isDragDisabled={editActive}>
+    <Draggable
+      draggableId={column.id}
+      key={column.id}
+      index={index}
+      isDragDisabled={editActive || dragDisabled}
+    >
       {(provided, snap) => (
         <div
           ref={provided.innerRef}
@@ -127,6 +137,7 @@ function Column(props: { boardId: string; column: IColumn; index: number }): JSX
                         columnId={column.id}
                         index={index}
                         task={task}
+                        dragDisabled={editActive || dragDisabled}
                       />
                     ))}
                   {provided.placeholder}

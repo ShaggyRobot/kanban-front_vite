@@ -138,14 +138,7 @@ const boardsApi = createApi({
           body,
         };
       },
-      async onQueryStarted(_, { dispatch, queryFulfilled }) {
-        try {
-          await queryFulfilled;
-          dispatch(boardsApi.util.invalidateTags(['board']));
-        } catch (error) {
-          return;
-        }
-      },
+      invalidatesTags: ['board'],
     }),
 
     deleteTask: builder.mutation<void, { boardId: string; columnId: string; taskId: string }>({
